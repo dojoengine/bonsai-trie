@@ -572,7 +572,7 @@ impl<H: StarkHash + Send + Sync> MerkleTree<H> {
         if value == Felt::ZERO {
             return self.delete_leaf(db, key);
         }
-        if key.len() != self.max_height as _ {
+        if key.len() != self.max_height as usize {
             return Err(BonsaiStorageError::KeyLength {
                 expected: self.max_height as _,
                 got: key.len(),
@@ -769,7 +769,7 @@ impl<H: StarkHash + Send + Sync> MerkleTree<H> {
         db: &KeyValueDB<DB, ID>,
         key: &BitSlice,
     ) -> Result<(), BonsaiStorageError<DB::DatabaseError>> {
-        if key.len() != self.max_height as _ {
+        if key.len() != self.max_height as usize {
             return Err(BonsaiStorageError::KeyLength {
                 expected: self.max_height as _,
                 got: key.len(),

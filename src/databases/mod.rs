@@ -7,3 +7,6 @@ mod rocks_db;
 
 #[cfg(feature = "rocksdb")]
 pub use rocks_db::{create_rocks_db, RocksDB, RocksDBBatch, RocksDBConfig, RocksDBTransaction};
+
+#[cfg(feature = "katana-db")]
+mod katana;

@@ -180,7 +180,7 @@ impl<H: StarkHash + Send + Sync> MerkleTree<H> {
         let mut iter = self.iter(db);
         for key in keys {
             let key = key.as_ref();
-            if key.len() != max_height as _ {
+            if key.len() != max_height as usize {
                 return Err(BonsaiStorageError::KeyLength {
                     expected: self.max_height as _,
                     got: key.len(),

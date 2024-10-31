@@ -4,14 +4,15 @@ name = "bonsai-trie"
 version = "0.1.0"
 
 [features]
-default = ["std", "rocksdb"]
+default = ["std", "rocksdb", "katana-db"]
 rocksdb = ["dep:rocksdb"]
+katana-db = ["dep:katana-db"]
 std = [
-  "parity-scale-codec/std",
-  "bitvec/std",
-  "starknet-types-core/std",
-  "rayon",
-  "hashbrown/rayon",
+	"parity-scale-codec/std",
+	"bitvec/std",
+	"starknet-types-core/std",
+	"rayon",
+	"hashbrown/rayon",
 ]
 # internal
 bench = []
@@ -19,7 +20,7 @@ bench = []
 [dependencies]
 bitvec = { version = "1", default-features = false, features = ["alloc"] }
 derive_more = { version = "0.99.17", default-features = false, features = [
-  "constructor",
+	"constructor",
 ] }
 hashbrown = "0.14.3"
 log = "0.4.20"
@@ -28,22 +29,24 @@ smallvec = { version = "1.11.2", features = ["serde"] }
 slotmap = "1.0.7"
 
 parity-scale-codec = { version = "3.0.0", default-features = false, features = [
-  "derive",
+	"derive",
 ] }
 serde = { version = "1.0.195", default-features = false, features = [
-  "derive",
-  "alloc",
+	"derive",
+	"alloc",
 ] }
 starknet-types-core = { version = "0.1.5", default-features = false, features = [
-  "hash",
-  "parity-scale-codec",
-  "alloc",
+	"hash",
+	"parity-scale-codec",
+	"alloc",
 ] }
 
 # Optionals
 rocksdb = { optional = true, version = "0.21.0", features = [
-  "multi-threaded-cf",
+	"multi-threaded-cf",
 ] }
+
+katana-db = { optional = true, git = "https://github.com/dojoengine/dojo" }
 
 [dev-dependencies]
 env_logger = "0.11.3"

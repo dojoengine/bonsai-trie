@@ -232,24 +232,24 @@ impl<'a, H: StarkHash + Send + Sync, DB: BonsaiDatabase, ID: Id> MerkleTreeItera
 mod tests {
     //! The tree used in this series of tests looks like this:
     //! ```
-    //!                    │                   
-    //!                   ┌▼┐                  
-    //!                (1)│ │[0]               
-    //!                   │ │                  
-    //!                   └┬┘                  
-    //!                (7)┌▼┐                  
-    //!              ┌────┴─┴────────┐         
-    //!             ┌▼┐             ┌▼┐        
+    //!                    │
+    //!                   ┌▼┐
+    //!                (1)│ │[0]
+    //!                   │ │
+    //!                   └┬┘
+    //!                (7)┌▼┐
+    //!              ┌────┴─┴────────┐
+    //!             ┌▼┐             ┌▼┐
     //!          (6)│ │[0100]    (5)│ │[000000]
-    //!             │ │             │ │        
-    //!             └┬┘             │ │        
-    //!          (4)┌▼┐             │ │        
-    //!        ┌────┴─┴─────┐       │ │        
-    //!        │           ┌▼┐      │ │        
-    //!    (2)┌▼┐       (3)│ │[0]   │ │        
-    //!    ┌──┴─┴─┐        │ │      │ │        
-    //!    │      │        └┬┘      └┬┘        
-    //!   0x1    0x2       0x3      0x4        
+    //!             │ │             │ │
+    //!             └┬┘             │ │
+    //!          (4)┌▼┐             │ │
+    //!        ┌────┴─┴─────┐       │ │
+    //!        │           ┌▼┐      │ │
+    //!    (2)┌▼┐       (3)│ │[0]   │ │
+    //!    ┌──┴─┴─┐        │ │      │ │
+    //!    │      │        └┬┘      └┬┘
+    //!   0x1    0x2       0x3      0x4
     //! ```
 
     use crate::{
@@ -408,7 +408,7 @@ mod tests {
                 iter.seek_to(bits![u8, Msb0; ]).unwrap();
                 assert_eq!(iter.leaf_hash, None);
                 assert_eq!(iter.current_path.0, bits![u8, Msb0; ]);
-                assert_eq!(iter.cur_nodes_ids(), vec![]);
+                assert_eq!(iter.cur_nodes_ids(), vec![] as Vec<u64>);
                 println!("{iter:?}");
             },
             // case 10
