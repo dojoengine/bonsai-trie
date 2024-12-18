@@ -128,6 +128,7 @@ pub mod id;
 
 pub use bonsai_database::{BonsaiDatabase, BonsaiPersistentDatabase, DBError, DatabaseKey};
 pub use error::BonsaiStorageError;
+pub use trie::merkle_node::Direction;
 pub use trie::path::Path;
 pub use trie::proof::{MultiProof, ProofNode};
 
