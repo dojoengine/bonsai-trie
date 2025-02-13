@@ -391,13 +391,12 @@ where
         todo!()
     }
 
-    /// Get all changes applied at a certain commit ID.
+    /// This returns all the changes from all the trees. It's fine for `katana` as we use separate [`BonsaiStorage`] for every tree.
     #[allow(clippy::type_complexity)]
     pub fn get_changes(
         &self,
-        id: ChangeID,
     ) -> Result<HashMap<BitVec, Change>, BonsaiStorageError<DB::DatabaseError>> {
-        self.tries.db_ref().get_changes(id)
+        self.tries.db_ref().get_changes()
     }
 
     #[cfg(test)]
