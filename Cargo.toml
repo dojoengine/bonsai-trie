@@ -43,7 +43,7 @@ starknet-types-core = { version = "0.2", default-features = false, features = [
 ] }
 
 # Optionals
-rocksdb = { optional = true, version = "0.22", features = [
+rocksdb = { optional = true, version = "0.24", features = [
   "multi-threaded-cf",
 ] }
 indexmap = "2.2.6"
@@ -61,6 +61,7 @@ criterion = "0.5.1"
 proptest = "1.4.0"
 proptest-derive = "0.4.0"
 serde_json = "1.0.68"
+hex = "0.4"
 
 [[bench]]
 name = "storage"
